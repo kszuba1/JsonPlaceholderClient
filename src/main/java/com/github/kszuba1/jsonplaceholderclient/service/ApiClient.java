@@ -31,13 +31,19 @@ public class ApiClient {
 
   public List<Post> getPosts() {
     final var headers = new HttpHeaders();
-    final var url = properties.getBaseUri() + "/posts";
-    log.info("Sending GET request to {}", url);
+    final var postsPath = "/posts";
+    return makeCall(postsPath, headers, HttpMethod.GET, null, new ParameterizedTypeReference<>(){});
+  }
 
+  private <T> T makeCall(String path, HttpHeaders headers, HttpMethod method, Object body, ParameterizedTypeReference<T> responseType) {
+    final var url = properties.getBaseUri() + path;
     try {
-      final var response = restTemplate.exchange(url, HttpMethod.GET, new HttpEntity<>(headers), new ParameterizedTypeReference<List<Post>>(){});
+      log.info("Sending {} request to {}", method, url);
 
-      log.info("Successfully fetched posts from {}", url);
+      final var response = restTemplate.exchange(url, method, new HttpEntity<>(body, headers), responseType);
+
+      log.info("Successfully received response from {}", url);
+
       return response.getBody();
     } catch (HttpClientErrorException e) {
       String errorMsg = String.format(HTTP_ERROR_MSG, e.getStatusCode(), url);
