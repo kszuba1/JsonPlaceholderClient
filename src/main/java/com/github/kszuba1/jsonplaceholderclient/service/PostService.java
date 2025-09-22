@@ -1,5 +1,7 @@
 package com.github.kszuba1.jsonplaceholderclient.service;
 
+import com.github.kszuba1.jsonplaceholderclient.exception.ApiClientException;
+import com.github.kszuba1.jsonplaceholderclient.exception.ApiServerException;
 import com.github.kszuba1.jsonplaceholderclient.model.Post;
 import java.io.IOException;
 import lombok.RequiredArgsConstructor;
@@ -15,9 +17,12 @@ public class PostService {
   private final FileService fileService;
 
   public void downloadAndSavePosts() {
-    final var posts = apiClient.getPosts();
-
-    posts.forEach(this::savePostToFile);
+    try {
+      final var posts = apiClient.getPosts();
+      posts.forEach(this::savePostToFile);
+    } catch (ApiClientException | ApiServerException e) {
+      log.error("Could not fetch posts: {}", e.getMessage());
+    }
   }
 
   private void savePostToFile(Post post) {
