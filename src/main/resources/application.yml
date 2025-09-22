@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: json-placeholder-client
+
+json-placeholder:
+  base-uri: https://jsonplaceholder.typicode.com
+
