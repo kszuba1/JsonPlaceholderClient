@@ -5,7 +5,6 @@ import com.github.kszuba1.jsonplaceholderclient.model.Post;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-@EnableConfigurationProperties(JsonPlaceholderProperties.class)
 @Slf4j
 public class ApiClient {
 
@@ -25,6 +23,6 @@ public class ApiClient {
     final var postsPath = "/posts";
     final var url = properties.getBaseUri() + postsPath;
 
-    return httpExecutor.execute(url, headers, HttpMethod.GET, null, new ParameterizedTypeReference<>(){});
+    return httpExecutor.execute(url, headers, HttpMethod.GET, new ParameterizedTypeReference<>(){});
   }
 }

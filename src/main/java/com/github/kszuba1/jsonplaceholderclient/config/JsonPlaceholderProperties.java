@@ -9,4 +9,5 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @Setter
 public class JsonPlaceholderProperties {
   private String baseUri;
+  private String outputDir;
 }

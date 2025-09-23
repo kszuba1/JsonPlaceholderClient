@@ -17,7 +17,7 @@ public class PostService {
   private final ApiClient apiClient;
   private final FileService fileService;
 
-  public void downloadAndSavePosts() {
+  public void fetchAndSavePosts() {
     try {
       final var posts = apiClient.getPosts();
       posts.forEach(this::savePostToFile);

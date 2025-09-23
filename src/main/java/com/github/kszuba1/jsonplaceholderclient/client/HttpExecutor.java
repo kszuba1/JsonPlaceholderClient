@@ -24,6 +24,10 @@ public class HttpExecutor {
 
   private final RestTemplate restTemplate;
 
+  public <T> T execute(String url, HttpHeaders headers, HttpMethod method, ParameterizedTypeReference<T> responseType) {
+    return execute(url, headers, method, null, responseType);
+  }
+
   public <T> T execute(String url, HttpHeaders headers, HttpMethod method, Object body, ParameterizedTypeReference<T> responseType) {
     try {
       log.info("Sending {} request to {}", method, url);

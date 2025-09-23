@@ -4,4 +4,5 @@ spring:
 
 json-placeholder:
   base-uri: https://jsonplaceholder.typicode.com
+  output-dir: ./posts
 
