@@ -1,5 +1,6 @@
 package com.github.kszuba1.jsonplaceholderclient.service;
 
+import com.github.kszuba1.jsonplaceholderclient.client.ApiClient;
 import com.github.kszuba1.jsonplaceholderclient.exception.ApiClientException;
 import com.github.kszuba1.jsonplaceholderclient.exception.ApiServerException;
 import com.github.kszuba1.jsonplaceholderclient.model.Post;

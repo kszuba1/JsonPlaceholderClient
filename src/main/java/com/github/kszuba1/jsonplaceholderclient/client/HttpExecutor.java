@@ -1,4 +1,4 @@
-package com.github.kszuba1.jsonplaceholderclient.service;
+package com.github.kszuba1.jsonplaceholderclient.client;
 
 import com.github.kszuba1.jsonplaceholderclient.exception.ApiClientException;
 import com.github.kszuba1.jsonplaceholderclient.exception.ApiServerException;
